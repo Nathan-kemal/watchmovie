@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding: 10px;
+    color: #FFF;
+    position: fixed;
+    width: 100%;
+    background-color: transparent;
+    z-index: 2;
+}
+
+nav ul {
+    display: flex;
+    position: relative;
+    right: 20px;
+}
+
+nav ul li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+nav ul li:hover {
+    color: red;
+}
