@@ -4,7 +4,7 @@ export const Category = {
     tv: 'tv', movie: 'movie'
 }
 export const movieType = {
-    upcoming: 'upcoming', popular: 'popular', top_rated: 'top_rated', trending:'trending'
+    upcoming: 'upcoming', popular: 'popular', top_rated: 'top_rated', trending:'trending', latest:'latest'
 };
 
 export const tvType = {
@@ -13,11 +13,11 @@ export const tvType = {
 export const movieDb = {
 
     getMovies: (type, params) => {
-        const url = 'movie/' + movieType[type] ;
+        const url = 'movie/' + movieType[type] + '?' + 'page=' + params;
         return axiosClient.get(url, params);
     },
     getTv: (type, params) => {
-        const url = 'tv/' + tvType[type];
+        const url = 'tv/' + tvType[type] + '?' + 'page=' + params;
         return axiosClient.get(url, params);
     },
     getVideos: (cate, id) => {
@@ -25,8 +25,9 @@ export const movieDb = {
         return axiosClient.get(url, {params: {}});
     },
     search: (cate, params) => {
-        const url = 'search/' + Category[cate];
-        return axiosClient.get(url, params);
+        const url = 'search/' + Category[cate] + '?' + 'query=' + params;
+
+        return axiosClient.get(url, {});
     },
     detail: (cate, id, params) => {
         const url = Category[cate] + '/' + id ;

@@ -95,7 +95,7 @@ function Detail(props) {
         async function getMovieVideos() {
             const response = await movieDb.getVideos(catagory, id, {});
             if (response !== undefined) {
-                setVideos(response.results.slice(0,3));
+                setVideos(response.results.slice(0, 3));
                 console.log(response)
             }
         }
@@ -108,17 +108,34 @@ function Detail(props) {
         <DetailPage>
             <Header/>
             {isLoading && <h1>Loading</h1>}
-            <div>
+            <motion.div
+                initial={{  opacity: 0, x: 100  }}
+                animate={{   opacity: 1, x: 0 }}
+                exit={{  opacity: 0, x: -100 }}
+                transition={{   duration: 2 }}
+            >
                 {movieInfo && <div>
-                    <Poster src={image_link.backdrop + movieInfo.backdrop_path}/>
+
+                        <Poster src={image_link.backdrop + movieInfo.backdrop_path}/>
+
+
                     <DetailContainer>
+                        <motion.div
+
+                        >
                         <ImageContainer>
                             <Image src={image_link.card + movieInfo.poster_path}/>
                         </ImageContainer>
-                        <div style={{
+                        </motion.div>
+                        <motion.div style={{
                             width: '700px',
                             marginLeft: '10px'
-                        }}>
+                        }}
+                                    initial={{  opacity: 0, x: 100  }}
+                                    animate={{   opacity: 1, x: 0 }}
+                                    exit={{  opacity: 0, x: -100 }}
+                                    transition={{   duration: 2 }}
+                        >
                             <OverLay/>
                             <h1>{movieInfo.title}</h1>
 
@@ -127,10 +144,12 @@ function Detail(props) {
 
                             <h1>Cast</h1>
                             {castInfo && <Castlist casts={castInfo.cast}/>}
-                        </div>
+                        </motion.div>
+
                     </DetailContainer>
+
                 </div>}
-            </div>
+            </motion.div>
             <Videos>
                 <Container>
                     {videos && videos.map(video => <VideoPlayer key={video.id} id={video.key} name={video.name}/>)}
@@ -145,7 +164,7 @@ function Detail(props) {
 }
 
 
-function VideoPlayer ({name, id}){
+function VideoPlayer({name, id}) {
     return <div>
         <h1>{name}</h1>
         <iframe allowFullScreen={true} style={{

@@ -23,7 +23,7 @@ function Button(props) {
             whileHover={{scale: 1.4}}
             whileTap={{scale: 0.9}}
         >
-            {props.title}
+            {props.children}
         </StyledButton>
     );
 }

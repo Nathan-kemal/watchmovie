@@ -7,8 +7,12 @@ const axiosClient = axios.create({
     headers: {
         'Content-Type': 'application/json',
     },
-    params:{
-        api_key: api_key
+    params: params => {
+        return qs.stringify( {...params,  api_key: api_key});
+    },
+
+    paramsSerializer: params => {
+        return qs.stringify( {...params,  api_key: api_key});
     }
 });
 

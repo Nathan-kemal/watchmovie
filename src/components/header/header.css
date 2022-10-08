@@ -7,7 +7,6 @@
     color: #FFF;
     position: fixed;
     width: 100%;
-    background-color: transparent;
     z-index: 2;
 }
 
@@ -17,11 +16,3 @@ nav ul {
     right: 20px;
 }
 
-nav ul li {
-    list-style: none;
-    margin-left: 20px;
-}
-
-nav ul li:hover {
-    color: red;
-}

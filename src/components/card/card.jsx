@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import styled from '@emotion/styled';
 import {motion} from "framer-motion";
-import {Link, useNavigate} from "react-router-dom";
-
+import {Link, useLocation, useParams} from "react-router-dom";
+import {FcStart} from 'react-icons/fc'
 const Container = styled(motion.div)`
   width: 150px;
   text-align: start;
-  color: #FFFFFF;
+  color: #CD104D;
   &:hover {
     cursor: pointer;
   }
@@ -55,19 +55,38 @@ const Card = ({img, title, category, id }) => {
         setOverlay({display: 'none'})
     }
 
-    const url = category + '/' + id;
+
+    const location = useLocation();
+    let url;
+    if(location.pathname === '/'){
+        url =   location.pathname  + category + '/' +id;
+    } else if(location.pathname.match('/search/')){
+        url = '/' + category + '/' + id;
+    }
+    else{
+        url = location.pathname  + '/' + id;
+    }
+
+
+
     return (
-        <Link to={url}>
+        <Link  to={url} style={{
+            textDecoration: 'none'
+        }}>
+
         <Container
             onMouseEnter={showOverlay}
             onMouseLeave={hideOverlay}
             whileTap={{scale: 0.9}}
         >
             <ImageContainer>
-                <div style={overlay}>df</div>
+                <div style={overlay}>
+                        <FcStart size={70}/>
+                </div>
                 <Image src={img}/>
             </ImageContainer>
-            <h4>{title}</h4>
+
+            <h4>{title} </h4>
 
         </Container>
         </Link>
