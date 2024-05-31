@@ -12,6 +12,18 @@ export const tvType = {
 }
 export const movieDb = {
 
+    getPopular: (type, params) => {
+        const url = 'movie/' + movieType[type];
+        return axiosClient.get(url, params);
+    },
+    getOnAir: (type, params) => {
+        const url = 'tv/' + tvType[type] + '?' + 'page=' + params;
+        return axiosClient.get(url, params);
+    },
+    getTopRated: (type, params) => {
+        const url = 'tv/' + tvType[type] + '?' + 'page=' + params;
+        return axiosClient.get(url, params);
+    },
     getMovies: (type, params) => {
         const url = 'movie/' + movieType[type] + '?' + 'page=' + params;
         return axiosClient.get(url, params);

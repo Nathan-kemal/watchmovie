@@ -96,7 +96,7 @@ function Detail(props) {
             const response = await movieDb.getVideos(catagory, id, {});
             if (response !== undefined) {
                 setVideos(response.results.slice(0, 3));
-                console.log(response)
+              
             }
         }
 

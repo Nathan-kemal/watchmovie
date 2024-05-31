@@ -21,7 +21,7 @@ const Image = styled.img`
 `;
 
 function CustomSwipper({datas, numberofPreview}) {
-    console.log(datas)
+    
     return (
         <div>
 

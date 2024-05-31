@@ -38,7 +38,7 @@ function Slider(props) {
 
     useEffect(() => {
          async function getTop() {
-           const movie = await movieDb.getMovies(movieType.popular)
+           const movie = await movieDb.getMovies(movieType.popular,1)
              if(movie != null){
                 setMovies(movie.results)
 

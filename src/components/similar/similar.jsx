@@ -10,7 +10,7 @@ function Similar({category, id}) {
             const response = await movieDb.similar(category,id);
             if(response !== undefined){
                 setSimilar(response.results);
-                console.log('nathan', response);
+               
             }
         }
 
